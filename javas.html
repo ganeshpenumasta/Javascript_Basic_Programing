@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js Validation</title>
+	<style>
+			body{
+				background: #fafafa;
+			}
+			form{
+				width: 300px;
+				height: 250px;
+				background: #fff;
+				box-shadow: 2px 2px 2px 2px #ccc;
+				margin: auto;
+				position: absolute;
+				top:0px;
+				bottom:0px;
+				right:0px;
+				left:0px;
+				padding: 10px;
+			}
+			input{
+				width: 100%;
+				margin: 10px 0px;
+				height: 24px;
+			}
+
+	</style>
+</head>
+<body>
+	 <form name="myForm" onsubmit="return validate()" action="JsValidation.html"> 
+		<input type="text" id="username" name="user" placeholder="Username" /> 
+		 <input type="password" id="pword" placeholder="Password" /> 
+		 <input type="text" id="email" placeholder="Email" /> 
+		 <input type="submit" id="submit" value="Submit" />  
+	 </form> 
+<button onclick="birds()">Birds</button>
+<script type="text/javascript"> 
+function birds(){
+	var totalBirds = 10;
+	var flyingBirds = 8;
+	var nonFlyingBirds = 2;
+	var output = document.getElementById('list');
+	for(var i=1;i<5;i++){
+		var out = "Bird "+ i + " is flying";
+		alert(out);
+	} 
+}
+
+	function validate(){
+		//var username = document.getElementById('username').value; 
+		var username = document.myForm.user.value; 
+		var pword = document.getElementById('pword').value;
+		var email = document.getElementById('email').value;
+		localStorage.setItem('username',username);
+		var mailvalid = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		var passwordvalid  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+		if(username == "" || username == null || username == undefined){
+			alert("Please Enter Username");
+			return false;
+		}
+		if(pword == "" || pword == null || pword == undefined){
+			alert("Please Enter password");
+			return false;
+		}
+		if(!passwordvalid.test(pword) || pword.length < 9 ) {
+			alert("password should contain atleast one number and one special character and below 8 characters");
+			return false;
+		}
+		if(email == ""){
+			alert("Please Enter Email");
+			return false;
+		}
+		if(!mailvalid.test(email)) {
+			alert("Please enter valid email");
+			return false;
+		} 
+		else{
+			alert("Your Form Is Submitted !");
+			return true;	
+		}
+	}
+</script>
+</body>
+<html>
+
