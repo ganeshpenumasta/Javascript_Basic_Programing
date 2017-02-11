@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<body>
+<script type="text/javascript">
+	document.title=  "Js Validation";
+	document.body.style.background = '#fafafa';
+	var myFOrm 	 = document.createElement('form');
+	myFOrm.name  = "form";
+	Object.assign(myFOrm.style,{background:"#fff",width:'250px',height:'200px',margin:'auto',padding:'15px',position:'absolute',top:'0px',bottom:'0px',left:'0px',right:'0px',boxShadow:'2px 2px 2px 2px #ccc'});
+	var user = localStorage.getItem('username');
+	var username = document.createElement('p');
+	username.textContent = 'Hello\t'+user;
+	var password = document.createElement('input');
+	var email 	 = document.createElement('input');
+	var submit	 = document.createElement('input');
+	Object.assign(username.style,{fontsize:"12px",margin:'10px 0px',width:'100%'});
+	Object.assign(password.style,{fontsize:"12px",margin:'10px 0px',width:'100%'});
+	Object.assign(email.style,{fontsize:"12px",margin:'10px 0px',width:'100%'});
+	Object.assign(submit.style,{fontsize:"12px",margin:'10px 0px',width:'100%',display:'block',background:'blue',color: '#fff',border:'1px solid #f56f5'});
+	submit.type = "Button";
+	submit.value ="Submit"; 
+	myFOrm.appendChild(username); 
+	myFOrm.appendChild(password);
+	myFOrm.appendChild(email);
+	myFOrm.appendChild(submit);
+	document.body.appendChild(myFOrm);
+	document.body.appendChild(myFOrm); 
+	
+</script>
+</body>
+<html>
+
