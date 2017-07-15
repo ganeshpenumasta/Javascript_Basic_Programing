@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		background:url(img/website-designer.jpg) no-repeat center center /cover fixed ;
+	    font-family: 'Roboto', sans-serif;
+	}
+	#form{
+		width: 319px;
+		max-width: 319px;
+		height: 315px;
+		max-height: 315px; 
+		color:#000;
+		margin:auto;
+		padding:25px;
+		position: absolute;
+		background-color: #fff;
+		top:0;
+		left:0;
+		right:0;
+		bottom: 0;
+		box-shadow: 0 1px 16px 0 rgba(0,0,0,.2),0 2px 8px 0 rgba(0,0,0,.14),0 4px 8px -1px rgba(0,0,0,.12);
+		-webkit-box-shadow: 0 1px 16px 0 rgba(0,0,0,.2),0 2px 8px 0 rgba(0,0,0,.14),0 4px 8px -1px rgba(0,0,0,.12);
+		-moz-box-shadow: 0 1px 16px 0 rgba(0,0,0,.2),0 2px 8px 0 rgba(0,0,0,.14),0 4px 8px -1px rgba(0,0,0,.12);
+		-o-box-shadow: 0 1px 16px 0 rgba(0,0,0,.2),0 2px 8px 0 rgba(0,0,0,.14),0 4px 8px -1px rgba(0,0,0,.12);
+		transition: all 3s;
+		border-radius:7px ;
+	}
+	/*--#form:hover{
+		color:#fff;
+		background-color: #2E283A;
+	}--*/
+	label{
+		display: block;
+		font-weight: bold;
+		padding:8px 0px;
+	}
+	input{
+		display: block;
+		width: 97%;
+		margin:auto;
+		height:20px;
+	}
+	input[type="text"],input[type="password"]{
+		margin:4px 0px;
+		padding:5px;
+	}
+	input[type="submit"]{
+		margin:15px 5px 5px 5px;
+		border:none;
+		background-color: #36887C;
+		color:#fff;
+		font-weight: bold;
+		height:35px;
+		cursor: pointer;
+		border-radius:5px;
+	}
+	#uservalidate,#passwordvalidate,#emailvalidation{
+		color:red;
+	} 
+	#over_chat{
+		overflow-y:scroll;
+		height:300px;
+		min-height:300px;
+		background:#CDDC39;
+	}
+	#chat_left input{
+		width:90%;
+		margin:auto;
+		position:absolute;
+		bottom:0px;
+		color:red;
+		}
+	#chat_left{
+		position:absolute;
+		right:20px;
+		top:100px;
+		width:300px;
+		height:300px;
+		min-height:300px;
+		background:#CDDC39;
+		border:2px solid #ccc;
+	}
+	button{
+		background:#ccc;
+		color:#fff;
+		padding:5px 10px;
+		border-radius:5px;
+		position:absolute;
+		right:5%;
+		bottom:5%;
+		cursor:pointer;
+	}
+	h3{
+		text-align:center; 
+	}
+	</style> 
+	<script type="text/javascript">
+		function validate(){
+			var user = 	document.getElementById("username").value;
+			var word = 	document.getElementById("password").value;
+			var email = 	document.getElementById("email").value;
+
+			localStorage.setItem("user",user);
+
+	        if(user==""){ 
+	        	document.getElementById("uservalidate").innerHTML = "Username Can\'t Be Empty";
+	        	return false; 
+	        }
+	        if(user.length>25){
+	        	document.getElementById("uservalidate").innerHTML = "Username must below 25 characters";
+	        	return false; 
+	        }
+	        if(user != ""){
+	        	document.getElementById("uservalidate").innerHTML = "";
+	        }
+	         if(word==""){
+	        	document.getElementById("passwordvalidate").innerHTML = "Password can't be empty";
+	        	return false;
+	        }
+	        if(word.length>8){
+	        	document.getElementById("passwordvalidate").innerHTML = "Password must below 8 characters";
+	        	return false;
+	        }
+	        if(word != ""){
+	        	document.getElementById("passwordvalidate").innerHTML = "";
+	        }
+	        if (email.value == "")
+			{
+	        	document.getElementById("emailvalidation").innerHTML = "Please enter a valid e-mail address.";
+			    return false;
+			}
+
+			if (email.indexOf("@", 0) < 0)
+			{
+			    document.getElementById("emailvalidation").innerHTML = "Please enter a valid e-mail address.";
+			    return false;
+			}
+
+			if (email.indexOf(".", 0) < 0)
+			{
+			   document.getElementById("emailvalidation").innerHTML = "Please enter a valid e-mail address.";
+			    return false;
+			}
+			if(email != ""){
+	        	document.getElementById("emailvalidation").innerHTML = "";
+	        }
+	        else{
+	        	return true;
+	        }
+	    }
+		function printkk(){
+			window.print();
+		}
+		function rchat(){
+			var first = document.getElementById("first").value;
+			alert(first);
+			document.body.innerHTML = first;
+		}
+		
+		function fun(ff){
+			document.getElementsByTagName("body").style.backgroundcolor = "red";
+		}
+	</script> 
+</head>
+<body>
+	<div id="page">
+		<form action="redirect.html" name="form1" onsubmit="return validate()" id="form" onmouseenter="fun()">
+			<h3>Sign In </h3>
+			<label>Username </label>
+			<input type="text" name="Username" autofocus="autofocus" placeholder="Username" id="username" >
+			<span id="uservalidate"></span>
+			<label>Password</label>
+			<input type="password" name="password" placeholder="Password" id="password">
+			<span id="passwordvalidate"></span>
+			<label>Email</label>
+			<input type="text" name="email" placeholder="email" id="email">
+			<span id="emailvalidation"></span>
+			<input type="submit" value="Login" />
+		</form>
+	</div>
+	<!--<form onsubmit="rchat()">
+		<div id="chat_left">
+			<input type="text" name="chatl" id="first"/>
+			<div id="over_chat">
+				
+			</div>
+		</div>
+	</form>-->
+	<button onclick="printkk()">Print</button>
+</body>
+</html>
